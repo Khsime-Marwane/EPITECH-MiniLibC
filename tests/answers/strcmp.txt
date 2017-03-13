@@ -1,0 +1,5 @@
+[empty string] = OK
+[a && a] = OK
+[a && b] = OK
+[ab && abc] = OK
+[b && a] = OK

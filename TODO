@@ -2,7 +2,7 @@
 [❌] • strchr
 [❌] • memset
 [❌] • memcpy
-[❌] • strcmp
+[✓] • strcmp
 [❌] • memmove
 [❌] • strncmp
 [❌] • strcasecmp

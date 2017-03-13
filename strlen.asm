@@ -21,4 +21,4 @@ my_strlen_end:
     mov     rax, rcx            ; Assign rcx to rax (contain the value returned)
     mov     rsp, rbp            ; epilogue
     pop     rbp                 ; pop the pointer on rbp
-    ret
+    ret                         ; return the value
