@@ -1,0 +1,6 @@
+[empty string n : 0] = OK
+[a && a] with n : 1 = OK
+[abc && ab] with n : 2 = OK
+[ax && abc] with n : 0 = OK
+[ab && axc] with n : 2 = OK
+[axc && ab] with n : 2 = OK

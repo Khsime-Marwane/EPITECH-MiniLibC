@@ -1,0 +1,5 @@
+[empty string] = 
+[looking for a in 'haribo'] = aribo
+[looking for a in 'hariboa'] = a
+[looking for z in 'zyakuza'] = za
+[looking for x in 'lol'] = (null)

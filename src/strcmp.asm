@@ -1,6 +1,15 @@
+;;
+;; Author: Marwane Khsime 
+;; Date: 2017-03-13 09:52:10 
+;;
+;; Last Modified by:   Marwane Khsime 
+;; Last Modified time: 2017-03-13 09:52:10
+;;
+
 [BITS 64]
 
 global  my_strcmp
+        ; int   my_strcmp(const char *, const char *)
 
 section .text
 

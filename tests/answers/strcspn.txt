@@ -1,0 +1,5 @@
+[empty string] = 0
+[empty string] = 1
+['jk' in 'ablsjkyoo' = 4
+['x' in 'aaaaaaaxa' = 7
+['x' in 'kkkkkkkkk' = 9

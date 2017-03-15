@@ -1,6 +1,15 @@
+;;
+;; Author: Marwane Khsime 
+;; Date: 2017-03-13 09:52:25 
+;;
+;; Last Modified by:   Marwane Khsime 
+;; Last Modified time: 2017-03-13 09:52:25
+;;
+
 [BITS 64]
 
 global  my_strlen
+        ; int   my_strlen(const char *);
 
 section .text
 
