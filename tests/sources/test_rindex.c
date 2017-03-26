@@ -12,13 +12,13 @@
 #include <stdio.h>
 #include <string.h>
 
-extern	char *my_rindex(const char *s, int c);
+extern	char *rindex(const char *s, int c);
 
 int	main() {
   printf("[empty string] = %s\n", "");
-  printf("[looking for a in 'haribo'] = %s\n", my_rindex("haribo", 'a'));
-  printf("[looking for a in 'hariboa'] = %s\n", my_rindex("hariboa", 'a'));
-  printf("[looking for z in 'zyakuza'] = %s\n", my_rindex("zyakuza", 'z'));
-  printf("[looking for x in 'lol'] = %s\n", my_rindex("lol", 'x'));
+  printf("[looking for a in 'haribo'] = %s\n", rindex("haribo", 'a'));
+  printf("[looking for a in 'hariboa'] = %s\n", rindex("hariboa", 'a'));
+  printf("[looking for z in 'zyakuza'] = %s\n", rindex("zyakuza", 'z'));
+  printf("[looking for x in 'lol'] = %s\n", rindex("lol", 'x'));
   return 0;
 }

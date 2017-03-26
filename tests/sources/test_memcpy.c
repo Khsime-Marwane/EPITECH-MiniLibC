@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 
-extern	void	my_memcpy(void *, const void *, size_t);
+extern	void	*memcpy(void *, const void *, size_t);
 
 int	main() {
   char	*test1 = malloc(sizeof(char) * 5);
@@ -24,10 +24,10 @@ int	main() {
   memset(test2, 0, 5);
   memset(test3, 0, 5);
 
-  // Calling our my_memset
-  my_memcpy(test1, "test", 4);
-  my_memcpy(test2, "lol", 3);
-  my_memcpy(test3, "ah", 0);
+  // Calling our memset
+  memcpy(test1, "test", 4);
+  memcpy(test2, "lol", 3);
+  memcpy(test3, "ah", 0);
 
   // test
   printf("%s\n", test1);

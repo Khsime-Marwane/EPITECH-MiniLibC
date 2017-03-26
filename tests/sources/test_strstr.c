@@ -12,15 +12,15 @@
 #include <stdio.h>
 #include <string.h>
 
-extern	char	*my_strstr(const char *, const char *);
+extern	char	*strstr(const char *, const char *);
 
 int	main() {
   char	test1[20] = "testingprogram";
   char	test2[20] = "yoloswaggy";
   char	test3[20] = "haribozarbi";
   
-  printf("%s\n", my_strstr(test1, "prog"));
-  printf("%s\n", my_strstr(test2, "swag"));
-  printf("%s\n", my_strstr(test3, "haribo"));
+  printf("%s\n", strstr(test1, "prog"));
+  printf("%s\n", strstr(test2, "swag"));
+  printf("%s\n", strstr(test3, "haribo"));
   return 0;
 }

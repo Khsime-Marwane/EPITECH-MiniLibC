@@ -8,25 +8,21 @@
 
 [BITS 64]
 
-global  my_memset
+global  memset:function
         ;   void *memset(void *s, int c, size_t n);
 
 section .text
 
-my_memset:
-    push    rbp                 ; init the my_memset functioon.
-    mov     rbp , rsp           ; move.
+memset:
     xor     rcx, rcx            ; set counter to 0
 
-my_memset_loop:
+memset_loop:
     cmp     rcx, rdx            ; check if counter is equal to n
-    je      my_memset_end       ; exit if 
+    je      memset_end       ; exit if 
     mov     [rdi + rcx], sil    ; push the value of c on rdi
     inc     rcx                 ;
-    jmp     my_memset_loop      ; loop again
+    jmp     memset_loop      ; loop again
 
-my_memset_end:
+memset_end:
     mov     rax, rdi
-    mov     rsp, rbp        ; epilogue
-    pop     rbp             ; pop rbp
     ret                     ; stop function

@@ -14,10 +14,10 @@
 extern	size_t strspn(const char *s, const char *accept);
 
 int	main() {
-  printf("[empty string] = %lu\n", my_strcspn("", "x"));
-  printf("[empty string] = %lu\n", my_strcspn("bhb", "h"));
-  printf("['jk' in 'ablsjkyoo' = %lu\n", my_strcspn("ablsjkyoo", "jk"));
-  printf("['x' in 'aaaaaaaxa' = %lu\n", my_strcspn("aaaaaaaxa", "x"));
-  printf("['x' in 'kkkkkkkkk' = %lu\n", my_strcspn("kkkkkkkkk", "x"));
+  printf("[empty string] = %lu\n", strcspn("", "x"));
+  printf("[empty string] = %lu\n", strcspn("bhb", "h"));
+  printf("['jk' in 'ablsjkyoo' = %lu\n", strcspn("ablsjkyoo", "jk"));
+  printf("['x' in 'aaaaaaaxa' = %lu\n", strcspn("aaaaaaaxa", "x"));
+  printf("['x' in 'kkkkkkkkk' = %lu\n", strcspn("kkkkkkkkk", "x"));
   return 0;
 }

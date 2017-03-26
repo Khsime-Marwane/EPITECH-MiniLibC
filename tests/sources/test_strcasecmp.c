@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 
-extern	int	my_strcasecmp(char *, char *);
+extern	int	strcasecmp(const char *, const char *);
 
 int	main() {
   printf("[empty string] = %s\n", strcasecmp("", "") == 0 ? "OK" : "KO");

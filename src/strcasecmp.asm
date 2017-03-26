@@ -1,64 +1,53 @@
 ;;
 ;; Author: Marwane Khsime 
-;; Date: 2017-03-13 09:52:10 
+;; Date: 2017-03-26 00:27:28 
 ;;
 ;; Last Modified by:   Marwane Khsime 
-;; Last Modified time: 2017-03-13 09:52:10
+;; Last Modified time: 2017-03-26 00:27:28
 ;;
 
 [BITS 64]
-
-global  my_strcasecmp
-                            ; int   my_strcasecmp(const char *, const char *)
+global strcasecmp:function
 
 section .text
 
-my_strcasecmp:
-    push    rbp             ; init the my_strcasecmp functioon.
-    mov     rbp, rsp        ; move.
+strcasecmp:
+	jmp strcasecmp_get_first
 
-my_strcasecmp_loop:
-    mov     al, [rdi]                   ; move the value of rdi to al (1 byte), first argument.
-    mov     bl, [rsi]                   ; move the value of rsi to bl (1 byte), second argument.
-    cmp     al, bl                      ; compare al and bl, if they are no equal, call check cases.
-    jne     my_strcasecmp_check_cases   ; => check cases function check the character with case sensible option
-    cmp     al, 0                       ; check if we are at the end of the first string.
-    je      my_strcasecmp_end           ; if it's true, go to end.
-    cmp     bl, 0                       ; check if we are at the end of the second string.
-    je      my_strcasecmp_end           ; if it's true, go to end.
-    inc     rsi                         ; increment rdi and rsi.
-    inc     rdi                         ;
-    jmp     my_strcasecmp_loop          ; loop again.
+strcasecmp_low1:
+	add al, 32					; decrement first char
+	jmp strcasecmp_get_second
 
-my_strcasecmp_check_cases:
-    cmp     al, bl
-    jl      my_strcasecmp_check_case_one        ;    if al < bl
-    jmp     my_strcasecmp_check_case_two        ;    if al > bl
+strcasecmp_low2:
+	add r8b, 32
+	jmp strcasecmp_compare		; decrement second char
 
-;   if the second character is lower than the second
-;
-my_strcasecmp_check_case_one:
-    cmp     bl, 97              ; check if bl is a letter
-    jl      my_strcasecmp_end   ;
-    cmp     bl, 122             ;
-    jg      my_strcasecmp_end   ;
-    sub     bl, 32              ; if it's true, sub bl to get the upper letter
-    jmp     my_strcasecmp_end   ; go to end
+strcasecmp_get_first:
+	mov al, [rdi]
+	cmp al, 65
+	jl strcasecmp_get_second
+	cmp al, 90
+	jl strcasecmp_low1
 
-;   if the first character is lower than the second
-;
-my_strcasecmp_check_case_two:
-    cmp     al, 97              ; check if al is a letter
-    jl      my_strcasecmp_end   ;
-    cmp     al, 122             ;
-    jg      my_strcasecmp_end   ;
-    sub     al, 32              ; if it's true, sub al to get the upper letter
-    jmp     my_strcasecmp_end   ; go to end
+strcasecmp_get_second:
+	mov r8b, [rsi]
+	cmp r8b, 65
+	jl strcasecmp_compare
+	cmp r8b, 90
+	jl strcasecmp_low2
 
-my_strcasecmp_end:
-    sub     al, bl          ; get the difference between the two values.
-    movsx   rax, al         ; move al in rax with byte's signe.
+strcasecmp_compare:
+	cmp al, r8b					; check if chars are different
+	jne end						; if it's true, go to end
+	cmp al, 0					; check if we are at the end of the first string
+	je end						; if it's true, go to end
+	cmp r8b, 0					; same here
+	je end						;
+	inc rsi
+	inc rdi
+	jmp strcasecmp_get_first	; loop again
 
-    mov     rsp, rbp        ; prologue.
-    pop     rbp             ; pop the pointer on rbp.
-    ret
+end:
+	sub al, r8b
+	movsx rax, al
+	ret

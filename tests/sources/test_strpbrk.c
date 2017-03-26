@@ -11,14 +11,14 @@
 #include <stdio.h>
 #include <string.h>
 
-extern	char *my_strpbrk(const char *s, const char *accept);
+extern	char *strpbrk(const char *s, const char *accept);
 
 int	main() {
-  printf("%s\n", my_strpbrk("helloworld", "r"));
-  char *str = my_strpbrk("helloworld", "s");
+  printf("%s\n", strpbrk("helloworld", "r"));
+  char *str = strpbrk("helloworld", "s");
   printf("%s\n", !str  ? "NULL" : str);
-  str = my_strpbrk("helloworld", "");
+  str = strpbrk("helloworld", "");
   printf("%s\n", !str  ? "NULL" : str);  
-  printf("%s\n", my_strpbrk("pmokijnhbgbvtfcwa", "abc"));
+  printf("%s\n", strpbrk("pmokijnhbgbvtfcwa", "abc"));
   return 0;
 }

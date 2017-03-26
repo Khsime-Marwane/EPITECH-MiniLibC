@@ -8,47 +8,37 @@
 
 [BITS 64]
 
-global  my_strncmp
-        ; int   my_strncmp(const char *s1, const char *s2, size_t n)
+global  strncmp:function
+        ; int   strncmp(const char *s1, const char *s2, size_t n)
 
 section .text
 
-my_strncmp:
-    push    rbp             ; init the my_strncmp functioon.
-    mov     rbp, rsp        ; move.
+strncmp:
     xor     rcx, rcx        ; init the counter
     cmp     rdx, 0          ;
-    je      my_strncmp_end_error  ;
+    je      strncmp_end_error  ;
 
-my_strncmp_loop:
+strncmp_loop:
     mov     al, [rdi]       ; move the value of rdi to al (1 byte), first argument.
-    mov     bl, [rsi]       ; move the value of rsi to bl (1 byte), second argument.
-    cmp     al, bl          ; compare al and bl, if they are no equal, jump to end.
-    jne     my_strncmp_end  ;
+    mov     r8b, [rsi]       ; move the value of rsi to r8b (1 byte), second argument.
+    cmp     al, r8b          ; compare al and r8b, if they are no equal, jump to end.
+    jne     strncmp_end  ;
     cmp     al, 0           ; check if we are at the end of the first string.
-    je      my_strncmp_end  ; if it's true, go to end.
-    cmp     bl, 0           ; check if we are at the end of the second string.
-    je      my_strncmp_end  ; if it's true, go to end.
+    je      strncmp_end  ; if it's true, go to end.
+    cmp     r8b, 0           ; check if we are at the end of the second string.
+    je      strncmp_end  ; if it's true, go to end.
     inc     rsi             ; increment rdi, rsi, and rcx.
     inc     rdi             ;
     inc     rcx             ;
     cmp     rcx, rdx        ;
-    je      my_strncmp_end  ;
-    jmp     my_strncmp_loop ; loop again.
+    je      strncmp_end  ;
+    jmp     strncmp_loop ; loop again.
 
-my_strncmp_end:
-    sub     al, bl          ; get the difference between the two values.
+strncmp_end:
+    sub     al, r8b          ; get the difference between the two values.
     movsx   rax, al         ; move al in rax with byte's signe.
-
-    mov     rsp, rbp        ; prologue.
-    pop     rbp             ; pop the pointer on rbp.
-
     ret
 
-my_strncmp_end_error:
+strncmp_end_error:
     mov     rax, 0         ; move al in rax with byte's signe.
-
-    mov     rsp, rbp        ; prologue.
-    pop     rbp             ; pop the pointer on rbp.
-
     ret

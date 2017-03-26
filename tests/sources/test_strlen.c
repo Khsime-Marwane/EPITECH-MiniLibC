@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <string.h>
 
-extern	int	my_strlen(char *);
+extern size_t	strlen(const char *);
 
 int	main() {
   printf("[empty string] : %d\n", (int)strlen(""));

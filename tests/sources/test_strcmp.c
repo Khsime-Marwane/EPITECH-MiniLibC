@@ -11,13 +11,13 @@
 #include <stdio.h>
 #include <string.h>
 
-extern	int	my_strcmp(char *, char *);
+extern	int	strcmp(const char *, const char *);
 
 int	main() {
-  printf("[empty string] = %s\n", my_strcmp("", "") == 0 ? "OK" : "KO");
-  printf("[a && a] = %s\n", my_strcmp("a", "a") == 0 ? "OK" : "KO");
-  printf("[a && b] = %s\n", my_strcmp("abc", "ab") > 0 ? "OK" : "KO");
-  printf("[ab && abc] = %s\n", my_strcmp("ab", "abc") < 0 ? "OK" : "KO");
-  printf("[b && a] = %s\n", my_strcmp("ab", "abc") < 0 ? "OK" : "KO");
+  printf("[empty string] = %s\n", strcmp("", "") == 0 ? "OK" : "KO");
+  printf("[a && a] = %s\n", strcmp("a", "a") == 0 ? "OK" : "KO");
+  printf("[a && b] = %s\n", strcmp("abc", "ab") > 0 ? "OK" : "KO");
+  printf("[ab && abc] = %s\n", strcmp("ab", "abc") < 0 ? "OK" : "KO");
+  printf("[b && a] = %s\n", strcmp("ab", "abc") < 0 ? "OK" : "KO");
   return 0;
 }

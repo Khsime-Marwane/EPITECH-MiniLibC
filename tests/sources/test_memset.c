@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 
-extern	void	*my_memset(void *, int, size_t);
+extern	void	*memset(void *, int, size_t);
 
 int	main() {
   char	*test1 = malloc(sizeof(char) * 5);
@@ -24,10 +24,10 @@ int	main() {
   memset(test2, '7', 5);
   memset(test3, '7', 5);
 
-  // Calling our my_memset
-  printf("%s\n", my_memset(test1, 'A', 3));
-  printf("%s\n", my_memset(test2, 'X', 4));
-  printf("%s\n", my_memset(test3, 'Z', 0));
+  // Calling our memset
+  printf("%s\n", memset(test1, 'A', 3));
+  printf("%s\n", memset(test2, 'X', 4));
+  printf("%s\n", memset(test3, 'Z', 0));
 
   return 0;
 }
